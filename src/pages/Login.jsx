@@ -22,6 +22,7 @@ const Login = ({ setToggle }) => {
     console.log("Match user form Localstorage", user);
 
     if (user) {
+      localStorage.setItem("currentuser", JSON.stringify(user));
       alert("Login successfully");
       reset();
       navigate("/home");
@@ -50,7 +51,7 @@ const Login = ({ setToggle }) => {
               Email
             </label>
             <input
-            {...register("fullname", { required: "fullname is required" })}
+            {...register("email", { required: "email is required" })}
               type="email"
               className="w-full bg-transparent border-b border-neutral-700 text-sm py-2.5 focus:outline-none focus:border-neutral-200 transition-colors"
             />

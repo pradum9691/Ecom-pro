@@ -1,19 +1,21 @@
 // layout/HomeLayout.jsx
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const HomeLayout = () => {
-  const navigate = useNavigate();
 
+  const [currentUser, setcurrentUser] = useState(JSON.parse(localStorage.getItem("currentuser") || "null"))
+  const navigate = useNavigate();
+  console.log("currentUser", currentUser);
+  
   const linkBase =
     "block px-4 py-2 rounded-md text-sm text-gray-300 hover:bg-gray-800";
   const active =
     "bg-gray-800 text-white";
 
   const handleLogout = () => {
-    // auth clear karo (token, user, etc.)
-    // localStorage.removeItem("token");
-    navigate("/"); // login pe bhej do
+    localStorage.removeItem("currentuser");
+    navigate("/"); 
   };
 
   return (
@@ -28,7 +30,7 @@ const HomeLayout = () => {
           {/* logged in card */}
           <div className="bg-slate-900/70 rounded-lg p-3 text-xs text-gray-300 mb-6">
             <p className="text-[10px] text-gray-400 mb-1">Logged in as:</p>
-            <p>gg@gmail.com</p>
+            <p>{currentUser.email}</p>
           </div>
 
           {/* Navigation links */}

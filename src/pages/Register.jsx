@@ -53,7 +53,7 @@ const Register = ({ setToggle }) => {
               Email
             </label>
             <input
-            {...register("fullname", { required: "fullname is required" })}
+            {...register("email", { required: "email is required" })}
               type="email"
               className="w-full bg-transparent border-b border-neutral-700 text-sm py-2.5 focus:outline-none focus:border-neutral-200 transition-colors"
             />
